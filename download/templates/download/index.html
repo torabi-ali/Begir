@@ -1,3 +1,11 @@
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'download/css/bootstrap.min.css' %}" />
+<link rel="stylesheet" type="text/css" href="{% static 'download/css/font-awesome.min.css' %}" />
+<link rel="stylesheet" type="text/css" href="{% static 'download/css/style.css' %}" />
+
+<script src="{% static 'download/js/jquery-2.2.4.min.js' %}"></script>
+<script src="{% static 'download/js/bootstrap.min.js' %}"></script>
+
 {% if latest_download_list %}
     <ul>
     {% for download in latest_download_list %}
