@@ -1,7 +1,7 @@
 {% if latest_download_list %}
     <ul>
     {% for download in latest_download_list %}
-        <li><a href="/download/{{ download.id }}/">{{ download.link }}</a></li>
+        <li><a href="{% url 'download:detail' download.id %}">{{ download.link }}</a></li>
     {% endfor %}
     </ul>
 {% else %}
