@@ -1,0 +1,9 @@
+{% if latest_download_list %}
+    <ul>
+    {% for download in latest_download_list %}
+        <li><a href="/download/{{ download.id }}/">{{ download.link }}</a></li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>No downloads are available.</p>
+{% endif %}
