@@ -1,17 +1,40 @@
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta property="og:type" content="website">
+<meta property="og:url" content="http://gotit.com">
+<meta property="og:description" content="مدیریت دانلود" />
+<meta property="og:locale" content="fa_IR" />
+<meta property="og:locale:alternate" content="en_US" />
+<meta property="og:GotIt.com" />
+
 {% load static %}
-<link rel="stylesheet" type="text/css" href="{% static 'download/css/bootstrap.min.css' %}" />
-<link rel="stylesheet" type="text/css" href="{% static 'download/css/font-awesome.min.css' %}" />
-<link rel="stylesheet" type="text/css" href="{% static 'download/css/style.css' %}" />
+<link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.min.css' %}" />
+<link rel="stylesheet" type="text/css" href="{% static 'css/font-awesome.min.css' %}" />
+<link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}" />
 
-<script src="{% static 'download/js/jquery-2.2.4.min.js' %}"></script>
-<script src="{% static 'download/js/bootstrap.min.js' %}"></script>
+<script src="{% static 'js/jquery-2.2.4.min.js' %}"></script>
+<script src="{% static 'js/bootstrap.min.js' %}"></script>
 
-{% if latest_download_list %}
-    <ul>
-    {% for download in latest_download_list %}
-        <li><a href="{% url 'download:detail' download.id %}">{{ download.link }}</a></li>
-    {% endfor %}
-    </ul>
-{% else %}
-    <p>No downloads are available.</p>
+{% if error_message %}
+<div class="col-sm-5 error">
+    <div class="panel panel-warning">
+        <div class="panel-heading">خطا</div>
+        <div class="panel-body">خطا هست</div>
+    </div>
+</div>
 {% endif %}
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-lg-12 col-md-offset-1">
+            <div class="col-md-10">
+                <form class="download">
+                    <input type="input" class="input input-lg" placeholder="Enter the URL:" required/>
+                    <span class="help-block">با وارد کردن آدرس فایل خود در نوار آدرس بالا، ما سعی می‌کنیم تا فایل شما را با حداکثر سرعت در اخیار شما قرار دهیم</span>
+                    <input type="submit" class="btn btn-primary" value="! بگیر">
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
