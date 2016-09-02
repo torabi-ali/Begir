@@ -1,19 +1,27 @@
-from django.http import HttpResponse
-from django.shortcuts import render
+from django.http import HttpResponseRedirect
+from django.urls import reverse
+from django.views import generic
+
+from download import models
+from .models import Download
 
 
-def index(request):
-    return render(request, 'download/index.html')
+class IndexView(generic.ListView):
+    model = Download
+    template_name = 'download/index.html'
 
 
-def detail(request, question_id):
-    return HttpResponse("You're looking at question %s." % question_id)
+class DetailView(generic.DetailView):
+    model = Download
+    template_name = 'download/detail.html'
 
 
-def results(request, question_id):
-    response = "You're looking at the results of DOWNLOAD %s."
-    return HttpResponse(response % question_id)
+class ResultsView(generic.DetailView):
+    model = Download
+    template_name = 'download/results.html'
 
 
-def progress(request, question_id):
-    return HttpResponse("You're processing DOWNLOAD %s." % question_id)
+def progress(request, download_link):
+    download = models.Download(link=download_link, status = 0)
+    download.save()
+    return HttpResponseRedirect(reverse('download:detail', args=(download.id,)))

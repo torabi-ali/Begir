@@ -29,8 +29,8 @@
     <div class="row">
         <div class="col-lg-12 col-md-offset-1">
             <div class="col-md-10">
-                <form class="download">
-                    <input type="input" class="input input-lg" placeholder="Enter the URL:" required/>
+                <form class="download" action="{% url 'download:progress' download_link %}" method="post">
+                    <input type="input" name="download_link" id="download_link" class="input input-lg" placeholder="Enter the URL:" value={{download_link}} required/>
                     <span class="help-block">با وارد کردن آدرس فایل خود در نوار آدرس بالا، ما سعی می‌کنیم تا فایل شما را با حداکثر سرعت در اخیار شما قرار دهیم</span>
                     <input type="submit" class="btn btn-primary" value="! بگیر">
                 </form>

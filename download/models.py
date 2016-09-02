@@ -7,6 +7,8 @@ class User(models.Model):
     def __str__(self):
         return self.name
 
+
+
 class Download(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     link = models.CharField(max_length=3000)
